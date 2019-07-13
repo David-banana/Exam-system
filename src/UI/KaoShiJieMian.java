@@ -202,6 +202,7 @@ public class KaoShiJieMian {
 				jta4.insert("Java阶段测试SE（一）", 0);
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.insert(str1,0);
+				
 			}
 		});
 		
@@ -219,6 +220,10 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
+				jcb1.setSelected(false);
+				jcb2.setSelected(false);
+				jcb3.setSelected(false);
+				jcb4.setSelected(false);
 				}
 			}
 		});
@@ -238,6 +243,10 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
+				jcb1.setSelected(false);
+				jcb2.setSelected(false);
+				jcb3.setSelected(false);
+				jcb4.setSelected(false);
 			}
 			}
 		});
