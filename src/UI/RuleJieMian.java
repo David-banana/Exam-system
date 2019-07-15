@@ -4,13 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import BEAN.Rule;
 import service.Controler;
 
@@ -18,6 +16,7 @@ public class RuleJieMian {
 	public JFrame window;
 	public Controler controler = new Controler();
 	public ClientContext cc;
+	public Rule rule;
 	
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
@@ -38,7 +37,6 @@ public class RuleJieMian {
 		JTextArea jta1 = new JTextArea();
 		jta1.setSize(800,400);
 		jta1.setLocation(100,100);
-		Rule rule = new Rule();
 		String str = controler.Ruletrue();
 		jta1.insert(str, 0);
 		Font font2 = new Font("宋体",Font.PLAIN,20);
@@ -71,4 +69,10 @@ public class RuleJieMian {
 			}
 		});
 	}
+
+	public void setControler(Controler controler) {
+		// TODO Auto-generated method stub
+		this.controler = controler;
+	}
+
 }

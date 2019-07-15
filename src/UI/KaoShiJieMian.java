@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -13,8 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
+import BEAN.User;
 import service.Controler;
+import service.GradeCompute;
 
 public class KaoShiJieMian {
 	public JFrame window;
@@ -22,11 +25,20 @@ public class KaoShiJieMian {
 	public int i = 0;
 	public int num1 = 1;
 	public ClientContext cc;
+	public Map<Integer,LinkedList<Integer>> map;
+	public GradeCompute gc;
+	public User user;
 	
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public void setClientContext(ClientContext cc) {
 			this.cc = cc;
 	}
 	
+	public void setGradeCompute(GradeCompute gc) {
+		this.gc = gc;
+	}
 	
 	public void setcontroler(Controler controler) {
 		this.controler = controler;
@@ -36,6 +48,7 @@ public class KaoShiJieMian {
 	}
 	
 	public KaoShiJieMian() {
+		map = new HashMap<Integer,LinkedList<Integer>>();
 		window = new JFrame();
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -210,8 +223,7 @@ public class KaoShiJieMian {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(i == 0) {
-				JOptionPane option = new JOptionPane();
-				 option.showMessageDialog(null, "这是第一题");
+				 JOptionPane.showMessageDialog(null, "这是第一题");
 				}else {
 					i--;num1--;
 				jta1.setText(" ");
@@ -220,10 +232,18 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
-				jcb1.setSelected(false);
-				jcb2.setSelected(false);
-				jcb3.setSelected(false);
-				jcb4.setSelected(false);
+				if(map.get(num1).contains(0) == true) {
+					jcb1.setSelected(true);
+				}
+				else if(map.get(num1).contains(1) == true) {
+					jcb2.setSelected(true);
+				}
+				else if(map.get(num1).contains(2) == true) {
+					jcb3.setSelected(true);
+				}
+				else if(map.get(num1).contains(3) == true) {
+					jcb4.setSelected(true);
+				}
 				}
 			}
 		});
@@ -232,8 +252,7 @@ public class KaoShiJieMian {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(i == controler.Chuti().size() - 1) {
-				 JOptionPane option = new JOptionPane();
-				 option.showMessageDialog(null, "已经是最后一题");
+				 JOptionPane.showMessageDialog(null, "已经是最后一题");
 				}else {
 					i++;
 					num1++;	
@@ -243,6 +262,31 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
+				LinkedList<Integer> list = new LinkedList<Integer>();
+						if(jcb1.isSelected() == true) {
+						list.clear();
+						list.add(0);
+						}
+						else if(jcb2.isSelected() == true)
+						{
+						list.clear();
+						list.add(1);
+						}
+						else if(jcb3.isSelected() == true)
+						{
+						list.clear();
+						list.add(2);
+						}
+						else if(jcb4.isSelected() == true)
+						{
+						list.clear();
+						list.add(3);
+						}
+						else {
+						list.clear();
+						list.add(4);
+						}
+				map.put(num1 - 1,list);
 				jcb1.setSelected(false);
 				jcb2.setSelected(false);
 				jcb3.setSelected(false);
@@ -255,6 +299,18 @@ public class KaoShiJieMian {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				LinkedList<Integer> list = new LinkedList<Integer>();
+				if(jcb1.isSelected() == true)
+					list.add(0);
+					else if(jcb2.isSelected() == true)
+					list.add(1);
+					else if(jcb3.isSelected() == true)
+					list.add(2);
+					else if(jcb4.isSelected() == true)
+					list.add(3);
+					else
+					list.add(4);
+				map.put(num1,list);
 				cc.examover.window.setVisible(true);
 			}
 		});

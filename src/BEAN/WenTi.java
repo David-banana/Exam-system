@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import service.GradeCompute;
+
 public class WenTi{
 		String answer;
 		String score;
@@ -17,7 +19,9 @@ public class WenTi{
 		String chooseB;
 		String chooseC;
 		String chooseD;
+		public GradeCompute gc;
 		Map<Integer,LinkedList<WenTi>> map = new HashMap<Integer,LinkedList<WenTi>>();
+		public Map<Integer,String> map1 = new HashMap<Integer,String>();
 	public void wentijiexi() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\java\\java\\corejava.txt"),"GBK"));
 		String str = "a";
@@ -46,13 +50,16 @@ public class WenTi{
 	}
 	
 	public LinkedList<WenTi> suijichuti() {
+		int x = 0;
 		LinkedList<WenTi> list1 = new LinkedList<WenTi>();
 		for(int i = 1; i < 11;i ++) {
 			for(Map.Entry<Integer, LinkedList<WenTi>>entry : map.entrySet()) {
 				if(i == entry.getKey()) {
 					for(int j = 0;j < 2; j++) {
+						x++;
 						int index = (int) (Math.random() * (entry.getValue().size()));
 						list1.add(entry.getValue().get(index ));
+						map1.put(x,entry.getValue().get(index).answer.substring(entry.getValue().get(index).answer.length() - 1));
 						entry.getValue().remove(index);
 					}	
 				}
@@ -67,5 +74,10 @@ public class WenTi{
 	}
 	public String toStringa() {
 		return tigan + "\n" + chooseA + "\n" + chooseB + "\n" + chooseC + "\n" + chooseD + "\n" + "本道题分数是：" + score + "\n" + "本道题难度等级是：" + level;
+	}
+
+	public void setGradeCompute(GradeCompute gc) {
+		this.gc = gc;
+		
 	}
 }

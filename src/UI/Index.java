@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -83,7 +81,7 @@ public class Index {
 			b1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					window.dispose();
+					window.setVisible(false);
 					cc.ksjm.window.setVisible(true);
 				}
 			});
@@ -91,7 +89,7 @@ public class Index {
 			b4.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
-					window.dispose();
+					window.setVisible(false);
 					cc.login.window.setVisible(true);
 				}
 			});
@@ -99,7 +97,7 @@ public class Index {
 			b3.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
-					window.dispose();
+					window.setVisible(false);
 					cc.rjm.window.setVisible(true);
 				}
 			});

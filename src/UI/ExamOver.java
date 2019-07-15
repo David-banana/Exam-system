@@ -12,12 +12,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import service.GradeCompute;
+
 public class ExamOver {
 	public ClientContext cc;
 	public JFrame window;
+	public GradeCompute gc;
+	public int grade;
 	
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
+	}
+	
+	public void setGradeCompute(GradeCompute gc) {
+		this.gc = gc;
 	}
 	public ExamOver(){
 	window = new JFrame();
@@ -25,7 +33,7 @@ public class ExamOver {
 	panel.setLayout(null);
 	panel.setBackground(Color.WHITE);
 	
-	JLabel jl1 = new JLabel("确定胶卷吗");
+	JLabel jl1 = new JLabel("确定交卷吗");
 	jl1.setLocation(170,0);
 	jl1.setSize(200,40);
 	Font font1 = new Font("宋体",Font.BOLD,20);
@@ -61,8 +69,8 @@ public class ExamOver {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			window.dispose();
-			cc.index.window.setVisible(true);
-			cc.ksjm.window.setVisible(false);
+			grade = gc.Grade();
+			cc.sg.window.setVisible(true);
 		}
 	});
 	

@@ -1,6 +1,7 @@
 package service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class Controler {
 	public Login login;
 	public KaoShiJieMian ksjm;
 	public LinkedList<WenTi> list1;
-	
+	public Map<Integer,String> map = new HashMap<Integer,String>();
 	public Controler(){
 	 rule = new Rule();
 	 user = new User();
@@ -29,6 +30,7 @@ public class Controler {
 		e.printStackTrace();
 	}
 	list1 = wenti.suijichuti();
+	map = wenti.map1;
 	dangqianuser = new User();
 	}
 

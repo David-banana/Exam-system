@@ -10,6 +10,11 @@ public class ClientContext {
 	public ExamOver examover;
 	public InsertError inserterror;
 	public CloseConfirm ccf;
+	public ShowGrade sg;
+	
+	public void setShowGrade(ShowGrade sg) {
+		this.sg = sg;
+	}
 	
 	public void setLogin(Login login) {
 		this.login = login;

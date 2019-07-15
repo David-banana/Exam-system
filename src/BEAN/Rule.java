@@ -9,12 +9,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 
 public class Rule {
+	@SuppressWarnings("resource")
 	public LinkedList<String> RuleJieXi() {
 		try {
 			LinkedList<String> list = new LinkedList<String>();
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\java\\java\\rule.txt"),"GBK"));
 			String	str1 = null;
-			String	str2 = null;
 			try {
 				while((str1 = br.readLine()) != null) {
 				 list.add(str1);
