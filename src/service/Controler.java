@@ -12,14 +12,14 @@ import UI.KaoShiJieMian;
 import UI.Login;
 
 public class Controler {
-	Rule rule;
-	User user;
-	public User dangqianuser;
-	WenTi wenti;
-	public Login login;
-	public KaoShiJieMian ksjm;
-	public LinkedList<WenTi> list1;
-	public Map<Integer,String> map = new HashMap<Integer,String>();
+	private Rule rule;
+	private User user;
+	private User dangqianuser;
+	private  WenTi wenti;
+	private Login login;
+	private KaoShiJieMian ksjm;
+	private LinkedList<WenTi> list1;
+	private Map<Integer,String> map = new HashMap<Integer,String>();
 	public Controler(){
 	 rule = new Rule();
 	 user = new User();
@@ -30,8 +30,8 @@ public class Controler {
 		e.printStackTrace();
 	}
 	list1 = wenti.suijichuti();
-	map = wenti.map1;
-	dangqianuser = new User();
+	setMap(wenti.map1);
+	setDangqianuser(new User());
 	}
 
 	public Login getLogin() {
@@ -64,11 +64,11 @@ public class Controler {
 		boolean flag = false;
 		Map<Integer, User> map = user.Userjiexi();
 		for(Map.Entry<Integer, User>entry : map.entrySet()) {
-			if(Integer.valueOf(login.str1).equals(Integer.valueOf(entry.getKey())) == true && Integer.valueOf(login.str2).equals(Integer.valueOf(entry.getValue().code))== true) {
+			if(Integer.valueOf(login.getStr1()).equals(Integer.valueOf(entry.getKey())) == true && Integer.valueOf(login.getStr2()).equals(Integer.valueOf(entry.getValue().getCode()))== true) {
 				flag = true;
-				System.out.println(entry.getValue().name);
-				 dangqianuser.name = entry.getValue().name;
-				 dangqianuser.number = entry.getValue().number;
+				System.out.println(entry.getValue().getName());
+				 getDangqianuser().setName(entry.getValue().getName());
+				 getDangqianuser().setNumber(entry.getValue().getNumber());
 			}
 		}
 		return flag;
@@ -79,5 +79,21 @@ public class Controler {
 			for(int i = 0;i < list1.size();i++)
 			list2.add(list1.get(i).toString());	
 		return list2;
+	}
+
+	public Map<Integer,String> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<Integer,String> map) {
+		this.map = map;
+	}
+
+	public User getDangqianuser() {
+		return dangqianuser;
+	}
+
+	public void setDangqianuser(User dangqianuser) {
+		this.dangqianuser = dangqianuser;
 	}
 }

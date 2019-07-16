@@ -13,10 +13,10 @@ import javax.swing.JTextArea;
 import service.GradeCompute;
 
 public class ShowGrade {
-	public JFrame window;
+	private JFrame window;
 	GradeCompute gc = new GradeCompute();
-	public ClientContext cc = new ClientContext();
-	public ExamOver examover = new ExamOver();
+	private ClientContext cc = new ClientContext();
+	private ExamOver examover = new ExamOver();
 	
 	public void setExamOver(ExamOver examover) {
 		this.examover = examover;
@@ -26,7 +26,7 @@ public class ShowGrade {
 	}
 	
 	public ShowGrade(){
-	window = new JFrame();
+	setWindow(new JFrame());
 	JPanel panel = new JPanel();
 	panel.setLayout(null);
 	panel.setBackground(Color.WHITE);
@@ -58,18 +58,18 @@ public class ShowGrade {
 	panel.add(b2);
 	
 	
-	window.add(panel);
-	window.setSize(300,300);
-	window.setResizable(false);
-	window.setTitle("考试结果");
-	window.setLocationRelativeTo(null);
+	getWindow().add(panel);
+	getWindow().setSize(300,300);
+	getWindow().setResizable(false);
+	getWindow().setTitle("考试结果");
+	getWindow().setLocationRelativeTo(null);
 	
 	b1.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			jta1.setVisible(true);
-			jta1.insert(String.valueOf(examover.grade), 0);
+			jta1.insert(String.valueOf(examover.getGrade()), 0);
 			b1.setVisible(false);
 		}
 	});
@@ -77,10 +77,16 @@ public class ShowGrade {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			window.setVisible(false);
-			cc.index.window.setVisible(true);
-			cc.ksjm.window.setVisible(false);		
+			getWindow().setVisible(false);
+			cc.getIndex().getWindow().setVisible(true);
+			cc.getKsjm().getWindow().setVisible(false);		
 		}
 	});
+	}
+	public JFrame getWindow() {
+		return window;
+	}
+	public void setWindow(JFrame window) {
+		this.window = window;
 	}
 }	

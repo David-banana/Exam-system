@@ -11,15 +11,15 @@ import java.util.Map;
 import service.GradeCompute;
 
 public class WenTi{
-		String answer;
-		String score;
-		int level;
-		String tigan;
-		String chooseA;
-		String chooseB;
-		String chooseC;
-		String chooseD;
-		public GradeCompute gc;
+	private String answer;
+	private String score;
+	private int level;
+	private String tigan;
+	private String chooseA;
+	private String chooseB;
+	private String chooseC;
+	private String chooseD;
+	private GradeCompute gc;
 		Map<Integer,LinkedList<WenTi>> map = new HashMap<Integer,LinkedList<WenTi>>();
 		public Map<Integer,String> map1 = new HashMap<Integer,String>();
 	public void wentijiexi() throws IOException {

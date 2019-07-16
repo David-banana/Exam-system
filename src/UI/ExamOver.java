@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 import service.GradeCompute;
 
 public class ExamOver {
-	public ClientContext cc;
-	public JFrame window;
-	public GradeCompute gc;
-	public int grade;
+	private ClientContext cc;
+	private JFrame window;
+	private GradeCompute gc;
+	private int grade;
 	
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
@@ -28,7 +28,7 @@ public class ExamOver {
 		this.gc = gc;
 	}
 	public ExamOver(){
-	window = new JFrame();
+	setWindow(new JFrame());
 	JPanel panel = new JPanel();
 	panel.setLayout(null);
 	panel.setBackground(Color.WHITE);
@@ -58,19 +58,19 @@ public class ExamOver {
 	tu1.setLocation(80, 40);
 	panel.add(tu1);
 	
-	window.add(panel);
-	window.setSize(450,450);
-	window.setResizable(false);
-	window.setTitle("考试结束");
-	window.setLocationRelativeTo(null);
+	getWindow().add(panel);
+	getWindow().setSize(450,450);
+	getWindow().setResizable(false);
+	getWindow().setTitle("考试结束");
+	getWindow().setLocationRelativeTo(null);
 	
 	b1.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			window.dispose();
-			grade = gc.Grade();
-			cc.sg.window.setVisible(true);
+			getWindow().dispose();
+			setGrade(gc.Grade());
+			cc.getSg().getWindow().setVisible(true);
 		}
 	});
 	
@@ -79,10 +79,26 @@ public class ExamOver {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			window.dispose();
+			getWindow().dispose();
 		}
 	});
 	
 	
+	}
+
+	public JFrame getWindow() {
+		return window;
+	}
+
+	public void setWindow(JFrame window) {
+		this.window = window;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 }

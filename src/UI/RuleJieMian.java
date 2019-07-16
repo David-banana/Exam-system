@@ -13,17 +13,17 @@ import BEAN.Rule;
 import service.Controler;
 
 public class RuleJieMian {
-	public JFrame window;
-	public Controler controler = new Controler();
-	public ClientContext cc;
-	public Rule rule;
+	private JFrame window;
+	private Controler controler = new Controler();
+	private ClientContext cc;
+	private Rule rule;
 	
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
 	}
 	
 	public RuleJieMian() {
-		window = new JFrame();
+		setWindow(new JFrame());
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
@@ -53,19 +53,19 @@ public class RuleJieMian {
 		panel.add(b1);
 		
 		
-		window.add(panel);
-		window.setSize(1000,600);
-		window.setLocationRelativeTo(null);
-		window.setResizable(false);
-		window.setTitle("考试系统");
-		window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getWindow().add(panel);
+		getWindow().setSize(1000,600);
+		getWindow().setLocationRelativeTo(null);
+		getWindow().setResizable(false);
+		getWindow().setTitle("考试系统");
+		getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		b1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				window.dispose();
-			cc.index.window.setVisible(true);
+				getWindow().dispose();
+			cc.getIndex().getWindow().setVisible(true);
 			}
 		});
 	}
@@ -73,6 +73,14 @@ public class RuleJieMian {
 	public void setControler(Controler controler) {
 		// TODO Auto-generated method stub
 		this.controler = controler;
+	}
+
+	public JFrame getWindow() {
+		return window;
+	}
+
+	public void setWindow(JFrame window) {
+		this.window = window;
 	}
 
 }

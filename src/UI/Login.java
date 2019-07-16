@@ -16,11 +16,11 @@ import javax.swing.JTextField;
 import service.Controler;
 
 public class Login {
-		public String str1;//用户名
-		public String str2;//密码
-		public JFrame window;
-		public Controler controler;
-		public ClientContext cc;
+	private String str1;//用户名
+	private String str2;//密码
+	private JFrame window;
+	private Controler controler;
+	private ClientContext cc;
 		
 		public void setcc(ClientContext cc) {
 			this.cc = cc;
@@ -36,7 +36,7 @@ public class Login {
 		
 		
 		public  Login() {
-			window = new JFrame();
+			setWindow(new JFrame());
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
 			panel.setBackground(Color.white);
@@ -82,44 +82,68 @@ public class Login {
 			tu1.setLocation(250, 10);
 			panel.add(tu1);
 			
-			window.add(panel);
-			window.setSize(700,500);
-			window.setResizable(false);
-			window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			window.setLocationRelativeTo(null);
-			window.setVisible(true);
-			window.setTitle("登录考试系统");
+			getWindow().add(panel);
+			getWindow().setSize(700,500);
+			getWindow().setResizable(false);
+			getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			getWindow().setLocationRelativeTo(null);
+			getWindow().setVisible(true);
+			getWindow().setTitle("登录考试系统");
 			
 			b2.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					cc.ccf.window.setVisible(true);
+					cc.getCcf().getWindow().setVisible(true);
 				}
 			});
 			
 			b1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					 str1 = jtf1.getText();
+					 setStr1(jtf1.getText());
 					 char[] temp= jpf1.getPassword();
 					 StringBuilder str = new StringBuilder();
 					 for(int i = 0;i < temp.length;i++) {
 						 str.append(temp[i]);
 					 }
-					 str2 = str.toString();
+					 setStr2(str.toString());
 					 boolean flag = controler.Logintrue();
-					 System.out.println(str1);
-					 System.out.println(str2);
+					 System.out.println(getStr1());
+					 System.out.println(getStr2());
 					 System.out.println(flag);
 					 if(flag == true) {
-						window.setVisible(false);
-						cc.index.window.setVisible(true);
+						getWindow().setVisible(false);
+						cc.getIndex().getWindow().setVisible(true);
 					 }else{
-						 cc.inserterror.window.setVisible(true);
+						 cc.getInserterror().getWindow().setVisible(true);
 					 }
 				}
 			});
 			
+		}
+
+		public String getStr1() {
+			return str1;
+		}
+
+		public void setStr1(String str1) {
+			this.str1 = str1;
+		}
+
+		public String getStr2() {
+			return str2;
+		}
+
+		public void setStr2(String str2) {
+			this.str2 = str2;
+		}
+
+		public JFrame getWindow() {
+			return window;
+		}
+
+		public void setWindow(JFrame window) {
+			this.window = window;
 		}
 		
 }

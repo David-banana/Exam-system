@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class InsertError {
-	public ClientContext cc;
-	public JFrame window;
+	private ClientContext cc;
+	private JFrame window;
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
 	}
 	public InsertError(){
-		window = new JFrame();
+		setWindow(new JFrame());
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
@@ -45,18 +45,24 @@ public class InsertError {
 		tu1.setLocation(50, 50);
 		panel.add(tu1);
 		
-		window.add(panel);
-		window.setSize(400,360);
-		window.setResizable(false);
-		window.setTitle("退出");
-		window.setLocationRelativeTo(null);
+		getWindow().add(panel);
+		getWindow().setSize(400,360);
+		getWindow().setResizable(false);
+		getWindow().setTitle("退出");
+		getWindow().setLocationRelativeTo(null);
 		
 		b1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				window.dispose();
+				getWindow().dispose();
 			}
 		});
+	}
+	public JFrame getWindow() {
+		return window;
+	}
+	public void setWindow(JFrame window) {
+		this.window = window;
 	}
 }

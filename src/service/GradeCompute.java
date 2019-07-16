@@ -7,10 +7,10 @@ import BEAN.WenTi;
 import UI.KaoShiJieMian;
 
 public class GradeCompute {
-	int grade;
-	public KaoShiJieMian ksjm = new KaoShiJieMian();
-	public WenTi wenti;
-	public Controler controler;
+	private int grade;
+	private KaoShiJieMian ksjm = new KaoShiJieMian();
+	private WenTi wenti;
+	private Controler controler;
 	
 	
 	Map<Integer, LinkedList<Integer>> map = new HashMap<Integer, LinkedList<Integer>>();
@@ -27,7 +27,7 @@ public class GradeCompute {
 	}
 	
 	public int Grade() {
-		for(Map.Entry<Integer, String>entry : controler.map.entrySet()) {
+		for(Map.Entry<Integer, String>entry : controler.getMap().entrySet()) {
 			String[] str = entry.getValue().split("/");
 			for(int i = 0;i < str.length;i++) {
 				LinkedList<Integer> list = new LinkedList<Integer>();
@@ -36,10 +36,10 @@ public class GradeCompute {
 			}		
 		}
 		System.out.println(map);
-		System.out.println(ksjm.map);
+		System.out.println(ksjm.getMap());
 		for(Map.Entry<Integer, LinkedList<Integer>>entry: map.entrySet()) {
-			System.out.println(entry.getValue().containsAll(ksjm.map.get(entry.getKey() - 1)));
-			if((entry.getValue().size() == ksjm.map.get(entry.getKey() - 1).size()) && (entry.getValue().containsAll(ksjm.map.get(entry.getKey() - 1)) == true)) {
+			System.out.println(entry.getValue().containsAll(ksjm.getMap().get(entry.getKey() - 1)));
+			if((entry.getValue().size() == ksjm.getMap().get(entry.getKey() - 1).size()) && (entry.getValue().containsAll(ksjm.getMap().get(entry.getKey() - 1)) == true)) {
 			grade ++;
 			}
 		}

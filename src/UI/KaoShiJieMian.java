@@ -20,14 +20,14 @@ import service.Controler;
 import service.GradeCompute;
 
 public class KaoShiJieMian {
-	public JFrame window;
-	public Controler controler;
-	public int i = 0;
-	public int num1 = 1;
-	public ClientContext cc;
-	public Map<Integer,LinkedList<Integer>> map;
-	public GradeCompute gc;
-	public User user;
+	private JFrame window;
+	private Controler controler;
+	private int i = 0;
+	private int num1 = 1;
+	private ClientContext cc;
+	private Map<Integer,LinkedList<Integer>> map;
+	private GradeCompute gc;
+	private User user;
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -47,8 +47,8 @@ public class KaoShiJieMian {
 	}
 	
 	public KaoShiJieMian() {
-		map = new HashMap<Integer,LinkedList<Integer>>();
-		window = new JFrame();
+		setMap(new HashMap<Integer,LinkedList<Integer>>());
+		setWindow(new JFrame());
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(243,225,65));
@@ -189,12 +189,12 @@ public class KaoShiJieMian {
 		panel.add(jcb3);
 		panel.add(jcb4);
 		
-		window.add(panel);
-		window.setSize(1400,800);
-		window.setResizable(false);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setLocationRelativeTo(null);
-		window.setTitle("登录考试系统");
+		getWindow().add(panel);
+		getWindow().setSize(1400,800);
+		getWindow().setResizable(false);
+		getWindow().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getWindow().setLocationRelativeTo(null);
+		getWindow().setTitle("登录考试系统");
 		
 		b4.addActionListener(new ActionListener() {
 			@Override
@@ -209,8 +209,8 @@ public class KaoShiJieMian {
 				jcb4.setVisible(true);
 				String str = controler.Chuti().get(i);
 				jta1.insert(str, 0);
-				jta2.insert(controler.dangqianuser.name, 0);
-				jta3.insert(String.valueOf(controler.dangqianuser.number), 0);
+				jta2.insert(controler.getDangqianuser().getName(), 0);
+				jta3.insert(String.valueOf(controler.getDangqianuser().getNumber()), 0);
 				jta4.insert("Java阶段测试SE（一）", 0);
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.insert(str1,0);
@@ -243,22 +243,22 @@ public class KaoShiJieMian {
 					list.add(3);
 					if (jcb1.isSelected() == false && jcb2.isSelected() == false && jcb3.isSelected() == false && jcb4.isSelected() == false)
 					list.add(4);
-					map.put(i + 1,list);
-					if(map.containsKey(i) == true) {
+					getMap().put(i + 1,list);
+					if(getMap().containsKey(i) == true) {
 						jcb1.setSelected(false);
 						jcb2.setSelected(false);
 						jcb3.setSelected(false);
 						jcb4.setSelected(false);
-				if(map.get(i).contains(0) == true) 
+				if(getMap().get(i).contains(0) == true) 
 					jcb1.setSelected(true);
-				if(map.get(i).contains(1) == true) 
+				if(getMap().get(i).contains(1) == true) 
 					jcb2.setSelected(true);
-				if(map.get(i).contains(2) == true) 
+				if(getMap().get(i).contains(2) == true) 
 					jcb3.setSelected(true);
-				if(map.get(i).contains(3) == true)
+				if(getMap().get(i).contains(3) == true)
 					jcb4.setSelected(true);
 				}
-					System.out.println(map);
+					System.out.println(getMap());
 				}
 			}
 		});
@@ -290,19 +290,19 @@ public class KaoShiJieMian {
 					if(jcb1.isSelected() == false && jcb2.isSelected() == false && jcb3.isSelected() == false && jcb4.isSelected() == false){
 					list.add(4);
 					}
-					map.put(i - 1,list);
-				if(map.containsKey(i) == true) {
+					getMap().put(i - 1,list);
+				if(getMap().containsKey(i) == true) {
 					jcb1.setSelected(false);
 					jcb2.setSelected(false);
 					jcb3.setSelected(false);
 					jcb4.setSelected(false);
-					if(map.get(i).contains(0) == true) 
+					if(getMap().get(i).contains(0) == true) 
 						jcb1.setSelected(true);
-					if(map.get(i).contains(1) == true) 
+					if(getMap().get(i).contains(1) == true) 
 						jcb2.setSelected(true);
-					if(map.get(i).contains(2) == true) 
+					if(getMap().get(i).contains(2) == true) 
 						jcb3.setSelected(true);
-					if(map.get(i).contains(3) == true) 
+					if(getMap().get(i).contains(3) == true) 
 						jcb4.setSelected(true);
 				}else {
 					jcb1.setSelected(false);
@@ -310,7 +310,7 @@ public class KaoShiJieMian {
 					jcb3.setSelected(false);
 					jcb4.setSelected(false);
 				}
-			System.out.println(map);
+			System.out.println(getMap());
 			}
 			}
 		});
@@ -330,9 +330,21 @@ public class KaoShiJieMian {
 					list.add(3);
 					else
 					list.add(4);
-				map.put(i,list);
-				cc.examover.window.setVisible(true);
+				getMap().put(i,list);
+				cc.getExamover().getWindow().setVisible(true);
 			}
 		});
+	}
+	public Map<Integer,LinkedList<Integer>> getMap() {
+		return map;
+	}
+	public void setMap(Map<Integer,LinkedList<Integer>> map) {
+		this.map = map;
+	}
+	public JFrame getWindow() {
+		return window;
+	}
+	public void setWindow(JFrame window) {
+		this.window = window;
 	}
 }

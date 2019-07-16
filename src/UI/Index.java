@@ -12,14 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class Index {
-	public JFrame window;
-	public ClientContext cc;
+	private JFrame window;
+	private ClientContext cc;
 	
 	public void setClientContext(ClientContext cc) {
 		this.cc = cc;
 	}
 		public Index() {
-			window = new JFrame();
+			setWindow(new JFrame());
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
 			panel.setBackground(Color.white);
@@ -71,36 +71,42 @@ public class Index {
 			tu1.setLocation(250, 50);
 			panel.add(tu1);
 			
-			window.add(panel);
-			window.setSize(800, 600);
-			window.setResizable(false);
-			window.setTitle("考试系统");
-			window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			window.setLocationRelativeTo(null);
+			getWindow().add(panel);
+			getWindow().setSize(800, 600);
+			getWindow().setResizable(false);
+			getWindow().setTitle("考试系统");
+			getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			getWindow().setLocationRelativeTo(null);
 			
 			b1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					window.setVisible(false);
-					cc.ksjm.window.setVisible(true);
+					getWindow().setVisible(false);
+					cc.getKsjm().getWindow().setVisible(true);
 				}
 			});
 			
 			b4.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
-					window.setVisible(false);
-					cc.login.window.setVisible(true);
+					getWindow().setVisible(false);
+					cc.getLogin().getWindow().setVisible(true);
 				}
 			});
 			
 			b3.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
-					window.setVisible(false);
-					cc.rjm.window.setVisible(true);
+					getWindow().setVisible(false);
+					cc.getRjm().getWindow().setVisible(true);
 				}
 			});
+		}
+		public JFrame getWindow() {
+			return window;
+		}
+		public void setWindow(JFrame window) {
+			this.window = window;
 		}
 		
 }
