@@ -28,7 +28,6 @@ public class KaoShiJieMian {
 	public Map<Integer,LinkedList<Integer>> map;
 	public GradeCompute gc;
 	public User user;
-	
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -232,17 +231,49 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
-				if(map.get(num1).contains(0) == true) {
+				LinkedList<Integer> list = new LinkedList<Integer>();
+				 list.clear();
+					if(jcb1.isSelected() == true) {
+					list.add(0);
+					}
+					else if(jcb2.isSelected() == true)
+					{
+					list.add(1);
+					}
+					else if(jcb3.isSelected() == true)
+					{
+					list.add(2);
+					}
+					else if(jcb4.isSelected() == true)
+					{
+					list.add(3);
+					}
+					else {
+					list.add(4);
+					}
+					map.put(i + 1,list);
+					if(map.containsKey(i) == true) {
+						jcb1.setSelected(false);
+						jcb2.setSelected(false);
+						jcb3.setSelected(false);
+						jcb4.setSelected(false);
+				if(map.get(i).contains(0) == true) {
 					jcb1.setSelected(true);
 				}
-				else if(map.get(num1).contains(1) == true) {
+				else if(map.get(i).contains(1) == true) {
 					jcb2.setSelected(true);
 				}
-				else if(map.get(num1).contains(2) == true) {
+				else if(map.get(i).contains(2) == true) {
 					jcb3.setSelected(true);
 				}
-				else if(map.get(num1).contains(3) == true) {
+				else if(map.get(i).contains(3) == true) {
 					jcb4.setSelected(true);
+				}
+				}else {
+					jcb1.setSelected(false);
+					jcb2.setSelected(false);
+					jcb3.setSelected(false);
+					jcb4.setSelected(false);
 				}
 				}
 			}
@@ -262,35 +293,51 @@ public class KaoShiJieMian {
 				String str1 = ("第" + num1 + "道题" + "/" + "共" + controler.Chuti().size() + "道题");
 				jta5.setText("");
 				jta5.insert(str1,0);
-				LinkedList<Integer> list = new LinkedList<Integer>();
-						if(jcb1.isSelected() == true) {
-						list.clear();
-						list.add(0);
-						}
-						else if(jcb2.isSelected() == true)
-						{
-						list.clear();
-						list.add(1);
-						}
-						else if(jcb3.isSelected() == true)
-						{
-						list.clear();
-						list.add(2);
-						}
-						else if(jcb4.isSelected() == true)
-						{
-						list.clear();
-						list.add(3);
-						}
-						else {
-						list.clear();
-						list.add(4);
-						}
-				map.put(num1 - 1,list);
+				 LinkedList<Integer> list = new LinkedList<Integer>();
+				 list.clear();
+					if(jcb1.isSelected() == true) {
+					list.add(0);
+					}
+					else if(jcb2.isSelected() == true)
+					{
+					list.add(1);
+					}
+					else if(jcb3.isSelected() == true)
+					{
+					list.add(2);
+					}
+					else if(jcb4.isSelected() == true)
+					{
+					list.add(3);
+					}
+					else {
+					list.add(4);
+					}
+					map.put(i - 1,list);
+				if(map.containsKey(i) == true) {
+					jcb1.setSelected(false);
+					jcb2.setSelected(false);
+					jcb3.setSelected(false);
+					jcb4.setSelected(false);
+					if(map.get(i).contains(0) == true) {
+						jcb1.setSelected(true);
+					}
+					else if(map.get(i).contains(1) == true) {
+						jcb2.setSelected(true);
+					}
+					else if(map.get(i).contains(2) == true) {
+						jcb3.setSelected(true);
+					}
+					else if(map.get(i).contains(3) == true) {
+						jcb4.setSelected(true);
+					}
+				}else {	 	
+				System.out.println(map);
 				jcb1.setSelected(false);
 				jcb2.setSelected(false);
 				jcb3.setSelected(false);
 				jcb4.setSelected(false);
+				}
 			}
 			}
 		});
