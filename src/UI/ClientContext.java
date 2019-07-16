@@ -37,7 +37,4 @@ public class ClientContext {
 	public void setCloseConfirm(CloseConfirm ccf) {
 		this.ccf = ccf;
 	}
-	public ClientContext() {
-	
-	}
 }

@@ -233,48 +233,32 @@ public class KaoShiJieMian {
 				jta5.insert(str1,0);
 				LinkedList<Integer> list = new LinkedList<Integer>();
 				 list.clear();
-					if(jcb1.isSelected() == true) {
+					if(jcb1.isSelected() == true) 
 					list.add(0);
-					}
-					else if(jcb2.isSelected() == true)
-					{
+					if(jcb2.isSelected() == true)
 					list.add(1);
-					}
-					else if(jcb3.isSelected() == true)
-					{
+					if(jcb3.isSelected() == true)
 					list.add(2);
-					}
-					else if(jcb4.isSelected() == true)
-					{
+					if(jcb4.isSelected() == true)
 					list.add(3);
-					}
-					else {
+					if (jcb1.isSelected() == false && jcb2.isSelected() == false && jcb3.isSelected() == false && jcb4.isSelected() == false)
 					list.add(4);
-					}
 					map.put(i + 1,list);
 					if(map.containsKey(i) == true) {
 						jcb1.setSelected(false);
 						jcb2.setSelected(false);
 						jcb3.setSelected(false);
 						jcb4.setSelected(false);
-				if(map.get(i).contains(0) == true) {
+				if(map.get(i).contains(0) == true) 
 					jcb1.setSelected(true);
-				}
-				else if(map.get(i).contains(1) == true) {
+				if(map.get(i).contains(1) == true) 
 					jcb2.setSelected(true);
-				}
-				else if(map.get(i).contains(2) == true) {
+				if(map.get(i).contains(2) == true) 
 					jcb3.setSelected(true);
-				}
-				else if(map.get(i).contains(3) == true) {
+				if(map.get(i).contains(3) == true)
 					jcb4.setSelected(true);
 				}
-				}else {
-					jcb1.setSelected(false);
-					jcb2.setSelected(false);
-					jcb3.setSelected(false);
-					jcb4.setSelected(false);
-				}
+					System.out.println(map);
 				}
 			}
 		});
@@ -294,23 +278,16 @@ public class KaoShiJieMian {
 				jta5.setText("");
 				jta5.insert(str1,0);
 				 LinkedList<Integer> list = new LinkedList<Integer>();
-				 list.clear();
-					if(jcb1.isSelected() == true) {
+				 	list.clear();
+					if(jcb1.isSelected() == true)
 					list.add(0);
-					}
-					else if(jcb2.isSelected() == true)
-					{
+					if(jcb2.isSelected() == true)
 					list.add(1);
-					}
-					else if(jcb3.isSelected() == true)
-					{
+					if(jcb3.isSelected() == true)
 					list.add(2);
-					}
-					else if(jcb4.isSelected() == true)
-					{
+					if(jcb4.isSelected() == true)
 					list.add(3);
-					}
-					else {
+					if(jcb1.isSelected() == false && jcb2.isSelected() == false && jcb3.isSelected() == false && jcb4.isSelected() == false){
 					list.add(4);
 					}
 					map.put(i - 1,list);
@@ -319,25 +296,21 @@ public class KaoShiJieMian {
 					jcb2.setSelected(false);
 					jcb3.setSelected(false);
 					jcb4.setSelected(false);
-					if(map.get(i).contains(0) == true) {
+					if(map.get(i).contains(0) == true) 
 						jcb1.setSelected(true);
-					}
-					else if(map.get(i).contains(1) == true) {
+					if(map.get(i).contains(1) == true) 
 						jcb2.setSelected(true);
-					}
-					else if(map.get(i).contains(2) == true) {
+					if(map.get(i).contains(2) == true) 
 						jcb3.setSelected(true);
-					}
-					else if(map.get(i).contains(3) == true) {
+					if(map.get(i).contains(3) == true) 
 						jcb4.setSelected(true);
-					}
-				}else {	 	
-				System.out.println(map);
-				jcb1.setSelected(false);
-				jcb2.setSelected(false);
-				jcb3.setSelected(false);
-				jcb4.setSelected(false);
+				}else {
+					jcb1.setSelected(false);
+					jcb2.setSelected(false);
+					jcb3.setSelected(false);
+					jcb4.setSelected(false);
 				}
+			System.out.println(map);
 			}
 			}
 		});
@@ -357,7 +330,7 @@ public class KaoShiJieMian {
 					list.add(3);
 					else
 					list.add(4);
-				map.put(num1,list);
+				map.put(i,list);
 				cc.examover.window.setVisible(true);
 			}
 		});

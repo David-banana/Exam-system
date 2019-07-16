@@ -38,7 +38,8 @@ public class GradeCompute {
 		System.out.println(map);
 		System.out.println(ksjm.map);
 		for(Map.Entry<Integer, LinkedList<Integer>>entry: map.entrySet()) {
-			if((entry.getValue().size() == ksjm.map.get(entry.getKey()).size()) && (entry.getValue().containsAll(ksjm.map.get(entry.getKey())) == true)) {
+			System.out.println(entry.getValue().containsAll(ksjm.map.get(entry.getKey() - 1)));
+			if((entry.getValue().size() == ksjm.map.get(entry.getKey() - 1).size()) && (entry.getValue().containsAll(ksjm.map.get(entry.getKey() - 1)) == true)) {
 			grade ++;
 			}
 		}
